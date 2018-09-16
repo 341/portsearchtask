@@ -2,3 +2,15 @@ node_modules
 .DS_Store
 thumbs.db
 public/javascripts/
+
+# Don't check auto-generated stuff into git
+coverage
+build
+stats.json
+
+# Cruft
+npm-debug.log
+.idea
+
+# Logs
+yarn-error.log
