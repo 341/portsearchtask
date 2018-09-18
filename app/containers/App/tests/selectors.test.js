@@ -5,7 +5,7 @@ import {
   makeSelectCurrentUser,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  makeSelectRepo,
   makeSelectLocation,
 } from '../selectors';
 
@@ -58,8 +58,8 @@ describe('makeSelectError', () => {
   });
 });
 
-describe('makeSelectRepos', () => {
-  const reposSelector = makeSelectRepos();
+describe('makeSelectRepo', () => {
+  const reposSelector = makeSelectRepo();
   it('should select the repos', () => {
     const repositories = fromJS([]);
     const mockedState = fromJS({

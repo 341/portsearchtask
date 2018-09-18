@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import ReposList from 'components/ReposList';
+import PortItem from 'components/Port';
 import './style.scss';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -15,17 +15,17 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
+    if (this.props.portname && this.props.portname.trim().length > 0) {
       this.props.onSubmitForm();
     }
   }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
+    const { loading, error, repo } = this.props;
+    const repoItemProps = {
       loading,
       error,
-      repos,
+      repo,
     };
 
     return (
@@ -43,18 +43,20 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <h2>Try me!</h2>
             <form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="username">
-              Show Github repositories by
-                <span className="at-prefix">@</span>
+              Show Port by Name
+                <span className="at-prefix"></span>
                 <input
                   id="username"
                   type="text"
-                  placeholder="flexdinesh"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
+                  placeholder="NOOSL"
+                  value={this.props.portname}
+                  onChange={this.props.onChangePortname}
                 />
               </label>
             </form>
-            <ReposList {...reposListProps} />
+            <PortItem {...repoItemProps} />
+
+            {/*<ReposList {...reposListProps} />*/}
           </section>
         </div>
       </article>
@@ -68,11 +70,11 @@ HomePage.propTypes = {
     PropTypes.object,
     PropTypes.bool,
   ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
+  repo: PropTypes.oneOfType([
+    PropTypes.object,
     PropTypes.bool,
   ]),
   onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
+  portname: PropTypes.string,
+  onChangePortname: PropTypes.func,
 };

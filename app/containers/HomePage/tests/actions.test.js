@@ -1,17 +1,17 @@
-import { CHANGE_USERNAME } from '../constants';
+import { CHANGE_PORTNAME } from '../constants';
 
-import { changeUsername } from '../actions';
+import { changePortname } from '../actions';
 
 describe('Home Actions', () => {
-  describe('changeUsername', () => {
+  describe('changePortname', () => {
     it('should return the correct type and the passed name', () => {
       const fixture = 'Max';
       const expectedResult = {
-        type: CHANGE_USERNAME,
+        type: CHANGE_PORTNAME,
         name: fixture
       };
 
-      expect(changeUsername(fixture)).toEqual(expectedResult);
+      expect(changePortname(fixture)).toEqual(expectedResult);
     });
   });
 });

@@ -16,9 +16,9 @@
  */
 
 import {
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
+  LOAD_REPO,
+  LOAD_REPO_SUCCESS,
+  LOAD_REPO_ERROR,
 } from './constants';
 
 /**
@@ -26,9 +26,9 @@ import {
  *
  * @return {object} An action object with a type of LOAD_REPOS
  */
-export function loadRepos() {
+export function loadRepo() {
   return {
-    type: LOAD_REPOS,
+    type: LOAD_REPO,
   };
 }
 
@@ -40,11 +40,11 @@ export function loadRepos() {
  *
  * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
  */
-export function reposLoaded(repos, username) {
+export function repoLoaded(repo, portname) {
   return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
+    type: LOAD_REPO_SUCCESS,
+    repo,
+    portname,
   };
 }
 
@@ -57,7 +57,7 @@ export function reposLoaded(repos, username) {
  */
 export function repoLoadingError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_REPO_ERROR,
     error,
   };
 }

@@ -8,8 +8,8 @@ import { shallow, mount } from 'enzyme';
 import ReposList from 'components/ReposList';
 import HomePage from '../HomePage';
 import { mapDispatchToProps } from '../index';
-import { changeUsername } from '../actions';
-import { loadRepos } from '../../App/actions';
+import { changePortname } from '../actions';
+import { loadRepo } from '../../App/actions';
 
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
@@ -25,8 +25,8 @@ describe('<HomePage />', () => {
     const submitSpy = jest.fn();
     mount(
       <HomePage
-        username="Not Empty"
-        onChangeUsername={() => {}}
+        portname="Not Empty"
+        onChangePortname={() => {}}
         onSubmitForm={submitSpy}
       />
     );
@@ -43,8 +43,8 @@ describe('<HomePage />', () => {
     const submitSpy = jest.fn();
     mount(
       <HomePage
-        username=""
-        onChangeUsername={() => {}}
+        portname=""
+        onChangePortname={() => {}}
         onSubmitForm={submitSpy}
       />
     );
@@ -52,19 +52,19 @@ describe('<HomePage />', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    describe('onChangeUsername', () => {
+    describe('onChangePortname', () => {
       it('should be injected', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
-        expect(result.onChangeUsername).toBeDefined();
+        expect(result.onChangePortname()).toBeDefined();
       });
 
-      it('should dispatch changeUsername when called', () => {
+      it('should dispatch changePortname when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
-        const username = 'flexdinesh';
-        result.onChangeUsername({ target: { value: username } });
-        expect(dispatch).toHaveBeenCalledWith(changeUsername(username));
+        const portname = 'NOOSL';
+        result.onChangePortname({ target: { value: portname } });
+        expect(dispatch).toHaveBeenCalledWith(changePortname(username));
       });
     });
 
@@ -75,11 +75,11 @@ describe('<HomePage />', () => {
         expect(result.onSubmitForm).toBeDefined();
       });
 
-      it('should dispatch loadRepos when called', () => {
+      it('should dispatch loadRepo when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
         result.onSubmitForm();
-        expect(dispatch).toHaveBeenCalledWith(loadRepos());
+        expect(dispatch).toHaveBeenCalledWith(loadRepo());
       });
 
       it('should preventDefault if called with event', () => {
