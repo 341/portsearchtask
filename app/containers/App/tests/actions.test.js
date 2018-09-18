@@ -1,37 +1,37 @@
 import {
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
+  LOAD_REPO,
+  LOAD_REPO_SUCCESS,
+  LOAD_REPO_ERROR,
 } from '../constants';
 
 import {
-  loadRepos,
-  reposLoaded,
+  loadRepo,
+  repoLoaded,
   repoLoadingError,
 } from '../actions';
 
 describe('App Actions', () => {
-  describe('loadRepos', () => {
+  describe('loadRepo', () => {
     it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS,
+        type: LOAD_REPO,
       };
 
-      expect(loadRepos()).toEqual(expectedResult);
+      expect(loadRepo()).toEqual(expectedResult);
     });
   });
 
-  describe('reposLoaded', () => {
+  describe('repoLoaded', () => {
     it('should return the correct type and the passed repos', () => {
       const fixture = ['Test'];
-      const username = 'test';
+      const portnmae = 'test';
       const expectedResult = {
-        type: LOAD_REPOS_SUCCESS,
-        repos: fixture,
-        username,
+        type: LOAD_REPO_SUCCESS,
+        repo: fixture,
+        portname,
       };
 
-      expect(reposLoaded(fixture, username)).toEqual(expectedResult);
+      expect(repoLoaded(fixture, portnmae)).toEqual(expectedResult);
     });
   });
 
@@ -41,7 +41,7 @@ describe('App Actions', () => {
         msg: 'Something went wrong!',
       };
       const expectedResult = {
-        type: LOAD_REPOS_ERROR,
+        type: LOAD_REPO_ERROR,
         error: fixture,
       };
 
